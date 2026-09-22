@@ -45,7 +45,11 @@ int libxmljs_debug;
             v8::Handle<v8::Value> cdataRef = objRef->GetInternalField(0);
             return ((SWIGV8_Proxy *) v8::External::Unwrap(cdataRef));
         #else
+            #if NODE_MAJOR_VERSION >= 25
+            return ((SWIGV8_Proxy *) objRef->GetAlignedPointerFromInternalField(0, v8::kEmbedderDataTypeTagDefault));
+            #else
             return ((SWIGV8_Proxy *) objRef->GetAlignedPointerFromInternalField(0));
+            #endif
         #endif
     }
 

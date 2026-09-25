@@ -21996,6 +21996,7 @@ static SwigV8ReturnValue _wrap_xmlNodeSetName(const SwigV8Arguments &args) {
     
     arg2 = reinterpret_cast< xmlChar * >(buf2);
   }xmlNodeSetName(arg1,(unsigned char const *)arg2);
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   jsresult = SWIGV8_UNDEFINED();
   
   
@@ -71778,14 +71779,14 @@ static SwigV8ReturnValue _wrap_xmlReadMemory(const SwigV8Arguments &args) {
   } 
   arg5 = static_cast< int >(val5);result = (xmlDocPtr)xmlReadMemory((char const *)arg1,arg2,(char const *)arg3,(char const *)arg4,arg5);
   jsresult = createWrap((xmlNode*) result, SWIGTYPE_p__xmlDoc);
-  // free(arg1);
-  
-  // free(arg3);
-  // free(arg4);
-  
-  
+
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+
+
   SWIGV8_RETURN(jsresult);
-  
+
   goto fail;
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
